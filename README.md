@@ -1,13 +1,13 @@
 # PassCraft
 
-### Descriere:
-- Acest script permite utilizatorului să genereze parole aleatorii conform specificațiilor dorite, inclusiv lungimea parolei, includerea sau excluderea caracterelor speciale și specificarea numărului de parole generate.
+### Description:
+- This script allows the user to generate random passwords according to desired specifications, including password length, inclusion or exclusion of special characters, and specifying the number of generated passwords.
 
-### Utilizare:
-   - Asigurați-vă că aveți Python instalat pe computer. Puteți descărca și instala Python de la adresa [https://www.python.org/downloads/](https://www.python.org/downloads/).
-   - Descărcați scriptul pentru generarea de parole aleatorii sau creați un nou fișier text și copiați codul din script în fișierul text.
-   - Deschideți terminalul sau linia de comandă și navigați la directorul în care se află scriptul.
-   - Rulați scriptul folosind Python. Pentru a face acest lucru, tastați `python PassCraft.py` și apăsați Enter.
-   - Urmăriți instrucțiunile afișate de script pentru a specifica lungimea parolei dorite, dacă doriți să includeți caractere speciale, numărul de parole dorite și dacă doriți să generați mai multe parole.
-   - Scriptul va genera și va afișa parolele aleatorii conform specificațiilor furnizate.
-   - Puteți repeta pașii 5-6 pentru a genera mai multe seturi de parole, dacă doriți.
+### Usage:
+   - Make sure you have Python installed on your computer. You can download and install Python from [https://www.python.org/downloads/](https://www.python.org/downloads/).
+   - Download the script for generating random passwords or create a new text file and copy the code from the script into the text file.
+   - Open the terminal or command line and navigate to the directory where the script is located.
+   - Run the script using Python. To do this, type `python PassCraft.py` and press Enter.
+   - Follow the instructions displayed by the script to specify the desired password length, whether you want to include special characters, the number of desired passwords, and whether you want to generate more passwords.
+   - The script will generate and display random passwords according to the provided specifications.
+   - You can repeat steps 5-6 to generate more sets of passwords if desired.

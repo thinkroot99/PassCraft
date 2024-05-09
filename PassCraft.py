@@ -1,21 +1,21 @@
 """
-Script pentru generarea de parole aleatorii.
+Script for generating random passwords.
 
 Script: PassCraft
-Autor: ThinkRoot
-Versiune: 7
+Author: ThinkRoot
+Version: 7
 
-Descriere:
-Acest script permite utilizatorului să genereze parole aleatorii conform specificațiilor dorite, inclusiv lungimea parolei, includerea sau excluderea caracterelor speciale și specificarea numărului de parole generate.
+Description:
+This script allows the user to generate random passwords according to desired specifications, including password length, inclusion or exclusion of special characters, and specifying the number of generated passwords.
 
-Utilizare:
-    - Asigurați-vă că aveți Python instalat pe computer. Puteți descărca și instala Python de la adresa https://www.python.org/downloads/.
-    - Descărcați scriptul pentru generarea de parole aleatorii sau creați un nou fișier text și copiați codul din script în fișierul text.
-    - Deschideți terminalul sau linia de comandă și navigați la directorul în care se află scriptul.
-    - Rulați scriptul folosind Python. Pentru a face acest lucru, tastați `python PassCraft.py` și apăsați Enter.
-    - Urmăriți instrucțiunile afișate de script pentru a specifica lungimea parolei dorite, dacă doriți să includeți caractere speciale, numărul de parole dorite și dacă doriți să generați mai multe parole.
-    - Scriptul va genera și va afișa parolele aleatorii conform specificațiilor furnizate.
-    - Puteți repeta pașii 5-6 pentru a genera mai multe seturi de parole, dacă doriți.
+Usage:
+    - Make sure you have Python installed on your computer. You can download and install Python from https://www.python.org/downloads/.
+    - Download the script for generating random passwords or create a new text file and copy the code from the script into the text file.
+    - Open the terminal or command line and navigate to the directory where the script is located.
+    - Run the script using Python. To do this, type `python PassCraft.py` and press Enter.
+    - Follow the instructions displayed by the script to specify the desired password length, whether you want to include special characters, the number of desired passwords, and whether you want to generate more passwords.
+    - The script will generate and display random passwords according to the provided specifications.
+    - You can repeat steps 5-6 to generate more sets of passwords if desired.
 """
 
 import random
@@ -24,22 +24,22 @@ import secrets
 
 def generate_password(length=16, include_special_chars=True, custom_charset=None):
     """
-    Funcția generează o parolă aleatorie conform specificațiilor date.
+    The function generates a random password according to the given specifications.
 
-    Parametri:
-    length (int): Lungimea parolei dorite (implicit 16).
-    include_special_chars (bool): Indicator pentru includerea caracterelor speciale (implicit True).
-    custom_charset (str): Setul personalizat de caractere pentru generarea parolei.
+    Parameters:
+    length (int): The desired length of the password (default is 16).
+    include_special_chars (bool): Indicator for including special characters (default is True).
+    custom_charset (str): The custom set of characters for password generation.
 
-    Returnează:
-    str: Parola generată.
+    Returns:
+    str: The generated password.
     """
     if custom_charset:
-        # Verificare set de caractere personalizat
+        # Check custom character set
         if len(set(custom_charset)) != len(custom_charset):
-            raise ValueError("Setul personalizat de caractere conține caractere duplicate.")
+            raise ValueError("The custom character set contains duplicate characters.")
         if any(char not in string.printable for char in custom_charset):
-            raise ValueError("Setul personalizat de caractere conține caractere nevalide.")
+            raise ValueError("The custom character set contains invalid characters.")
         characters = custom_charset
     else:
         characters = string.ascii_letters + string.digits
@@ -47,10 +47,10 @@ def generate_password(length=16, include_special_chars=True, custom_charset=None
             characters += string.punctuation
 
     if not isinstance(length, int) or length <= 0:
-        raise ValueError("Lungimea parolei trebuie să fie un număr întreg pozitiv.")
+        raise ValueError("The password length must be a positive integer.")
 
     if length < 8:
-        raise ValueError("Lungimea minimă a parolei trebuie să fie cel puțin 8 caractere.")
+        raise ValueError("The minimum password length must be at least 8 characters.")
 
     password = [secrets.choice(string.ascii_lowercase),
                 secrets.choice(string.ascii_uppercase),
@@ -65,66 +65,66 @@ def generate_password(length=16, include_special_chars=True, custom_charset=None
 
 def get_password_requirements():
     """
-    Funcția solicită utilizatorului lungimea, opțiunea de includere a caracterelor speciale și opțiunea de repetare.
+    The function prompts the user for the length, option to include special characters, and option to repeat.
 
-    Returnează:
-    int: Lungimea parolei specificată de utilizator.
-    bool: Indicator pentru includerea caracterelor speciale.
-    bool: Indicator pentru repetarea generării de parole.
+    Returns:
+    int: The length of password specified by the user.
+    bool: Indicator for including special characters.
+    bool: Indicator for repeating password generation.
     """
-    print("Introdu lungimea parolei (minim 8): ")
+    print("Enter the desired password length (minimum 8): ")
     while True:
         try:
             password_length = int(input())
             if password_length < 8:
-                raise ValueError("Lungimea minimă a parolei trebuie să fie cel puțin 8 caractere.")
+                raise ValueError("The minimum password length must be at least 8 characters.")
             break
         except ValueError:
-            print("Te rog introdu un număr întreg pentru lungimea parolei: ")
+            print("Please enter an integer for the password length: ")
 
-    print("Dorești să incluzi caractere speciale? (Da/Nu): ")
+    print("Do you want to include special characters? (Yes/No): ")
     while True:
         choice = input().strip().lower()
-        if choice in ["da", "nu"]:
-            include_special_chars = choice == "da"
+        if choice in ["yes", "no"]:
+            include_special_chars = choice == "yes"
             break
         else:
-            print("Te rog răspunde cu Da sau Nu: ")
+            print("Please respond with Yes or No: ")
 
-    print("Câte parole dorești să generezi?")
+    print("How many passwords do you want to generate?")
     while True:
         try:
             num_passwords = int(input())
             if num_passwords <= 0:
-                raise ValueError("Numărul de parole generate trebuie să fie un număr pozitiv.")
+                raise ValueError("The number of generated passwords must be a positive number.")
             break
         except ValueError:
-            print("Te rog introdu un număr pozitiv pentru numărul de parole generate: ")
+            print("Please enter a positive number for the number of generated passwords: ")
 
-    print("Dorești să generezi alte parole? (Da/Nu): ")
+    print("Do you want to generate more passwords? (Yes/No): ")
     while True:
         choice = input().strip().lower()
-        if choice in ["da", "nu"]:
-            repeat = choice == "da"
+        if choice in ["yes", "no"]:
+            repeat = choice == "yes"
             break
         else:
-            print("Te rog răspunde cu Da sau Nu: ")
+            print("Please respond with Yes or No: ")
 
     return password_length, include_special_chars, num_passwords, repeat
 
 if __name__ == "__main__":
     try:
-        print("Acest script generează parole aleatorii.")
-        print("Instrucțiuni: Introdu lungimea dorită pentru parolă (minim 8), alege dacă dorești să incluzi caractere speciale, specifică numărul de parole și dacă dorești să generezi alte parole.")
+        print("This script generates random passwords.")
+        print("Instructions: Enter the desired length for the password (minimum 8), choose whether to include special characters, specify the number of passwords, and whether you want to generate more passwords.")
 
         while True:
             password_length, include_special_chars, num_passwords, repeat = get_password_requirements()
 
             for _ in range(num_passwords):
                 password = generate_password(password_length, include_special_chars)
-                print("Parola generată:", password)
+                print("Generated password:", password)
 
             if not repeat:
                 break
     except Exception as e:
-        print("Eroare:", e)
+        print("Error:", e)
